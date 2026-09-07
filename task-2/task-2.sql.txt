@@ -1,0 +1,24 @@
+CREATE DATABASE task2_db;
+
+USE task2_db;
+
+CREATE TABLE Category (
+    category_id INT PRIMARY KEY AUTO_INCREMENT,
+    category_name VARCHAR(100) NOT NULL UNIQUE,
+    description VARCHAR(255)
+);
+
+CREATE TABLE Product (
+    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(150) NOT NULL,
+    category_id INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    stock INT NOT NULL DEFAULT 0,
+
+    FOREIGN KEY (category_id)
+        REFERENCES Category(category_id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+);
+
+SHOW TABLES;
